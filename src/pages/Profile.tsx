@@ -9,7 +9,7 @@ export const Profile = () => {
 
   const logoutHandler = () => {
     logout();
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (

@@ -24,9 +24,9 @@ export const Navbar = () => {
         <NavItem path="/contact" label="Contact" />
         <NavItem path="/products" label="Products" />
 
-        {!user && <NavItem path="/login" label="Login" />}
-
         {user && <NavItem path="/profile" label="Profile" />}
+
+        {!user && <NavItem path="/login" label="Login" />}
       </nav>
     </header>
   );

@@ -11,9 +11,9 @@ export const Login = () => {
   const { login } = useAuth();
 
   const loginHandler = () => {
-    if (user) {
+    if (user?.name) {
       login(user);
-      navigate("/");
+      navigate("/", { replace: true });
     }
   };
 
@@ -27,7 +27,12 @@ export const Login = () => {
           type="text"
           className="w-[20rem] rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           placeholder="name"
-          onBlur={(event) => setUser({ name: event.target.value })}
+          onBlur={(event) => {
+            if (event.target.value) {
+              setUser({ name: event.target.value });
+            }
+          }}
+          required
         />
         <Button onClick={loginHandler} label="Login" />
       </div>

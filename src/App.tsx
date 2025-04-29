@@ -17,6 +17,7 @@ import { NotFound } from "./pages/NotFound";
 import { Products } from "./pages/Products";
 import { Profile } from "./pages/Profile";
 import { Purchase } from "./pages/Purchase";
+import { RequiredAuth } from "./pages/RequiredAuth";
 import { UserDetail } from "./pages/UserDetail";
 import { Users } from "./pages/Users";
 
@@ -47,7 +48,14 @@ function App() {
               <Route path=":userId" element={<UserDetail />} />
               <Route path="admin" element={<Admin />} />
             </Route>
-            <Route path="profile" element={<Profile />} />
+            <Route
+              path="profile"
+              element={
+                <RequiredAuth>
+                  <Profile />
+                </RequiredAuth>
+              }
+            />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
